@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class EMICalculator {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+      
+        System.out.print("Enter loan amount (P): ");
+        double principal = sc.nextDouble();
+
+        System.out.print("Enter annual interest rate (in %): ");
+        double annualRate = sc.nextDouble();
+
+        System.out.print("Enter loan tenure (in years): ");
+        int years = sc.nextInt();
+
+        
+        double monthlyRate = annualRate / (12 * 100); // r
+        int months = years * 12; // n
+
+       
+        double emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) 
+                   / (Math.pow(1 + monthlyRate, months) - 1);
+
+        
+        System.out.printf("Monthly EMI: %.2f\n", emi);
+
+        sc.close();
+    }
+}
